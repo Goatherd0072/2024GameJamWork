@@ -24,6 +24,7 @@ public class SpawnManager : MonoSingleton<SpawnManager>
     public float spawnInterval = 1f;
     public Vector2 moveTimeRange = new Vector2(2.0f, 5.0f);
     public Queue<(float time, GameObject go)> tempQ = new();
+    public float timeOffset = 4.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -68,7 +69,7 @@ public class SpawnManager : MonoSingleton<SpawnManager>
     {
         for (int i = 0; i < maxSpawnCount; i++)
         {
-            float waitTime = GameManager.instance.spawnCurve.Evaluate((float)i / maxSpawnCount) * GameManager.instance.oneDayTime;
+            float waitTime = GameManager.instance.spawnCurve.Evaluate((float)i / maxSpawnCount) * (GameManager.instance.oneDayTime- timeOffset);
 
             Vector3 tempV3 = new Vector3();
             tempV3.x = startX;
