@@ -1,11 +1,11 @@
 public struct GameData
 {
-    public int score;//ÈËÆø
-    public int lastScore;//×òÈÕÈËÆø
-    public int Days;//ÌìÊı
-    public float Money;//½ğÇ®
-    public float BannedValue;//½û¼ÉÖµ
-    public float MaxBannedValue;//½û¼ÉÖµÉÏÏŞ
+    public int score;//äººæ°”
+    public int lastScore;//æ˜¨æ—¥äººæ°”
+    public int Days;//å¤©æ•°
+    public float Money;//é‡‘é’±
+    public float BannedValue;//ç¦å¿Œå€¼
+    public float MaxBannedValue;//ç¦å¿Œå€¼ä¸Šé™
     public float oneDayTime;
     public float currentTime;
     public int normalCommnet;
@@ -36,7 +36,6 @@ public struct GameData
 
     public (float addScore, float addMoney, int days, float dex) Calculate()
     {
-        BannedValue -= 20.0f;
         if (BannedValue < 0)
         {
             BannedValue = 0;

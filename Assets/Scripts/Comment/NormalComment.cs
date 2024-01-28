@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class NormalComment : Comment
 {
-    public Vector2 randomX = new(0.3f, 1.0f);
-    public Vector2 randomY = new(0.3f, 1.0f);
+    public Vector2 randomX = new(0.5f, 1.0f);
+    public Vector2 randomY = new(0.8f, 1.5f);
 
     void Start()
     {
@@ -18,7 +18,7 @@ public class NormalComment : Comment
 
     public override void HasClicked()
     {
-        base.HasClicked();    
+        base.HasClicked();
         ////Debug.Log("NormalComment HasClicked");
         isClicked = true;
 
@@ -34,7 +34,10 @@ public class NormalComment : Comment
 
     public override void HasMissed()
     {
-        GameManager.instance.AddScore(-10);
+        if (Random.value < 0.4f)
+        {
+            GameManager.instance.AddScore(-(int)(10*Random.value));
+        }
         //Debug.Log("NormalComment HasMissed");
         Destroy(gameObject);
     }

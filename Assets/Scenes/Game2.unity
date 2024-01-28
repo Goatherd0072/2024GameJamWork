@@ -4175,7 +4175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6158faf342fdd3f4ba8820d2645cd1b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oneDayTime: 5
+  oneDayTime: 20
   currentTime: 0
   spawnCurve:
     serializedVersion: 2

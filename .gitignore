@@ -10,7 +10,7 @@
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 /Assets/Plugins/
-
+/.vscode/
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
@@ -75,3 +75,6 @@ crashlytics-build.properties
 #PlasticScm
 .plastic/
 ignore.conf
+
+./LiveCareer.zip
+LiveCareer.zip

@@ -25,6 +25,12 @@ public class MainManager : MonoSingleton<MainManager>
         //WIndowsLinker.instance.OpenStartWindows.Invoke(true);
     }
 
+    public void RemoveSubManager<T>() where T : MonoBehaviour
+    {
+
+    }
+
+
     void AddSubManager<T>(string name) where T : MonoBehaviour, new()
     {
         GameObject go = null;

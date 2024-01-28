@@ -44,11 +44,12 @@ public class GameManager : MonoSingleton<GameManager>, ISubject
 
     private void FixedUpdate()
     {
+        subBannedV();
         gameData.currentTime += Time.fixedDeltaTime;
         currentTime = gameData.currentTime;
         CheckTime();
         NotifyObservers();
-        subBannedV();
+
     }
 
     void subBannedV()
@@ -112,10 +113,11 @@ public class GameManager : MonoSingleton<GameManager>, ISubject
         var date = gameData.Calculate();
 
 
-        string str = $"当前天数{date.days}" +
-            $"今日增加人气{date.addScore}\n" +
-            $"扣除房租贷款{date.dex}后增加{date.addMoney}\n" +
-            $"还剩{gameData.Money}元\n";
+        string str = $"鎰熻阿娓哥帺\n"+
+            $"褰撳墠澶╂暟{date.days}\n" +
+            $"浠婃棩澧炲姞浜烘皵{date.addScore}\n" +
+            $"鎵ｉ櫎鎴跨璐锋{date.dex}鍚庡鍔爗date.addMoney}\n" +
+            $"杩樺墿{gameData.Money}鍏僜n";
 
         return str;
     }

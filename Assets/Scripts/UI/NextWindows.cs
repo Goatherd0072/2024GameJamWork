@@ -41,32 +41,40 @@ public class NextWindows : MonoBehaviour
         string str = GameManager.instance.Calculate();
         if (GameManager.instance.CheckIsBan())
         {
-            tmp_calculate.text = "³¬¹ÜÈÌÄãºÜ¾ÃÁË,\nÖ±²¥¼äÒÑ±»·â½ûÁË£¡";
-            tmp_left.text = "ÖØÊÔ";
+            tmp_calculate.text = "è¶…ç®¡å¿ä½ å¾ˆä¹…äº†,\nç›´æ’­é—´å·²è¢«å°ç¦äº†ï¼";
+            tmp_left.text = "é‡è¯•";
             btn_left.onClick.AddListener(() =>
             {
-                string currentSceneName = SceneManager.GetActiveScene().name;
+                return;
+                int currentSceneName = SceneManager.GetActiveScene().buildIndex;
+                DOTween.KillAll();
 
-                // ÖØÐÂ¼ÓÔØµ±Ç°³¡¾°
-                SceneManager.LoadScene(currentSceneName);
+                // é‡æ–°åŠ è½½å½“å‰åœºæ™¯
+                SceneManager.LoadScene(currentSceneName == 0 ? 1 : 0);
             });
+
+            return;
         }
 
         if (GameManager.instance.CheckMoney())
         {
-            tmp_calculate.text = "Ö±²¥¼äÈËÆø²»×ã£¬ÄãÒÑ¾­ÆÆ²ú¡£";
-            tmp_left.text = "ÖØÊÔ";
+            tmp_calculate.text = "ç›´æ’­é—´äººæ°”ä¸è¶³ï¼Œä½ å·²ç»ç ´äº§ã€‚";
+            tmp_left.text = "é‡è¯•";
             btn_left.onClick.AddListener(() =>
             {
-                string currentSceneName = SceneManager.GetActiveScene().name;
+                return;
+                int currentSceneName = SceneManager.GetActiveScene().buildIndex;
+                DOTween.KillAll();
 
-                // ÖØÐÂ¼ÓÔØµ±Ç°³¡¾°
-                SceneManager.LoadScene(currentSceneName);
+                // é‡æ–°åŠ è½½å½“å‰åœºæ™¯
+                SceneManager.LoadScene(currentSceneName == 0 ? 1 : 0);
             });
+
+            return;
         }
 
         tmp_calculate.text = str;
-        tmp_left.text = "¼ÌÐø";
+        tmp_left.text = "ç»§ç»­";
         btn_left.onClick.AddListener(() =>
         {
 
