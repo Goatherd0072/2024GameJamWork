@@ -18,15 +18,13 @@ public class NormalComment : Comment
 
     public override void HasClicked()
     {
-        base.HasClicked();
+        base.HasClicked();    
         ////Debug.Log("NormalComment HasClicked");
         isClicked = true;
 
         GameManager.instance.AddScore(100);
 
-        if (DOTween.IsTweening(transform))
-            DOTween.Kill(transform);
-        Destroy(gameObject);
+        DestroyComment();
     }
 
     public override void HasHovered()

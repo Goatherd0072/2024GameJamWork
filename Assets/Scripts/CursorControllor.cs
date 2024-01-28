@@ -1,12 +1,9 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CursorControllor : MonoSingleton<CursorControllor>
 {
-    const int MAX_CHECK_COLLIDER = 4;
+    const int MAX_CHECK_COLLIDER = 2;
     public GameObject cursor;
     public RectTransform gameArea;
     public Sprite spr_cursor;
@@ -48,7 +45,7 @@ public class CursorControllor : MonoSingleton<CursorControllor>
         for (int i = 0; i < l; i++)
         {
             //Debug.Log(colA[i]);
-            colA[i].GetComponent<Comment>().HasHovered();
+            colA[i].GetComponent<Comment>().HasClicked();
         }
 
         CheckMouseDown(colA, l);
@@ -80,7 +77,7 @@ public class CursorControllor : MonoSingleton<CursorControllor>
     {
         Cursor.visible = false;
         pos = Camera.main.ScreenToWorldPoint(pos);
-        cursor.transform.DOMove(pos, 0.1f, false);
+        cursor.transform.DOMove(pos, 0.3f, false);
     }
 
     public void SetGameArea(RectTransform area)

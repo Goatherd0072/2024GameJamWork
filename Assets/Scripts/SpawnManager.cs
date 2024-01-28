@@ -17,20 +17,37 @@ public class SpawnManager : MonoSingleton<SpawnManager>
     [Header("Spawn Prafabs")]
     const string prefabPath = "Prefabs/Comment/";
     public GameObject normalComment = null;
+    public GameObject attakcComment = null;
+    public GameObject bombComment = null;
 
     [Header("Spawn Config")]
-    public int maxSpawnCount = 100;
+    public int maxSpawnCount = 200;
+    public List<int> categry = new();
+    float[] categoryRate = new float[] { 0.4f, 0.4f, 0.2f };
     public float delayTime = 2f;
     public float spawnInterval = 1f;
     public Vector2 moveTimeRange = new Vector2(2.0f, 5.0f);
     public Queue<(float time, GameObject go)> tempQ = new();
     public float timeOffset = 4.0f;
 
+    public SpawnManager() { }
+
+    public SpawnManager(int max, float[] rate,Vector2 moveSpeed)
+    {
+        maxSpawnCount = max;
+        categoryRate = rate;
+        moveTimeRange = moveSpeed;
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
         normalComment = Resources.Load<GameObject>(prefabPath + "NormalComment");
+        attakcComment = Resources.Load<GameObject>(prefabPath + "AttackComment");
+        bombComment = Resources.Load<GameObject>(prefabPath + "BombComment");
 
+        categry = GenerateNumbers(maxSpawnCount, categoryRate);
         // delay 2s 
         //Invoke("StartSpawnComment", delayTime);
 
@@ -53,7 +70,7 @@ public class SpawnManager : MonoSingleton<SpawnManager>
         if (tq.Count == 0 || tq == null)
         { return; }
 
-        if (tq.Peek().time <= GameManager.instance.currentTime)
+        if (tq.Peek().time <= GameManager.instance.gameData.currentTime)
         {
             //Debug.Log("3");
             var temp = tq.Dequeue();
@@ -69,18 +86,51 @@ public class SpawnManager : MonoSingleton<SpawnManager>
     {
         for (int i = 0; i < maxSpawnCount; i++)
         {
-            float waitTime = GameManager.instance.spawnCurve.Evaluate((float)i / maxSpawnCount) * (GameManager.instance.oneDayTime- timeOffset);
+            float waitTime = GameManager.instance.spawnCurve.Evaluate((float)i / maxSpawnCount) * (GameManager.instance.oneDayTime - timeOffset);
 
             Vector3 tempV3 = new Vector3();
             tempV3.x = startX;
             tempV3.y = Random.Range(MinY, MaxY);
             //Debug.Log(tempV3);
 
-            GameObject obj = Instantiate(normalComment, tempV3, normalComment.transform.rotation, transform);
+            var go = categry[i] switch
+            {
+                0 => normalComment,
+                1 => attakcComment,
+                2 => bombComment,
+                _ => null
+            };
+
+            GameObject obj = Instantiate(go, tempV3, normalComment.transform.rotation, transform);
             //obj.transform.position = tempV3;
             tq.Enqueue((waitTime, obj));
         }
         isSpawning = true;
+    }
+
+    List<int> GenerateNumbers(int count, float[] probabilities)
+    {
+        List<int> result = new List<int>();
+
+        for (int i = 0; i < count; i++)
+        {
+            double randomNumber = Random.value;
+            double cumulativeProbability = 0;
+
+            for (int j = 0; j < probabilities.Length; j++)
+            {
+                cumulativeProbability += probabilities[j];
+
+                if (randomNumber < cumulativeProbability)
+                {
+                    //Debug.Log(j);
+                    result.Add(j);
+                    break;
+                }
+            }
+        }
+
+        return result;
     }
 
     public void StartSpawnComment()

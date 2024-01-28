@@ -2174,7 +2174,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u6E38\u620F\u540D\u79F0\n\u4F60\u662F\u4E00\u4E2A\u4E70\u4E86\u70C2\u5C3E\u697C\u7684\u5927\u9F84\u7A0B\u5E8F\u5458\uFF0C\u524D\u4E0D\u4E45\u521A\u88AB\u516C\u53F8\u88C1\u5458\u3002\u4F60\u9009\u62E9\u79DF\u4E86\u4E2A\u51FA\u79DF\u5C4B\u5F00\u76F4\u64AD\uFF0C\u9017\u4E50\u89C2\u4F17\u6765\u8D5A\u94B1\u6765\u652F\u4ED8\u623F\u8D37\u3002\n\u4F60\u9700\u8981\u83B7\u53D6\u8DB3\u591F\u591A\u7684\u4EBA\u6C14\u6765\u8D5A\u94B1\u3002\u5728\u4E00\u5929\u7684\u65F6\u95F4\u5185\u5C3D\u53EF\u80FD\u7684\u9009\u62E9\u56DE\u590D\u89C2\u4F17\u7684\u5F39\u5E55\u6765\u4F7F\u5F97\u89C2\u4F17\u5F00\u5FC3\u3002\u7136\u800C\u5F39\u5E55\u5E76\u4E0D\u4E00\u5B9A\u90FD\u662F\u6B63\u5E38\u7684\u5F39\u5E55\uFF0C\u4E5F\u53EF\u80FD\u4F1A\u6709\u4E00\u4E9B\u53EF\u80FD\u4E0D\u597D\u7684\u8A00\u8BBA\u4F1A\u5BF9\u76F4\u64AD\u95F4\u9020\u6210\u4E0D\u540C\u7684\u5F71\u54CD\u3002\n\u4F60\u9700\u8981\u5728\u6BCF\u5929\u7ED3\u675F\u524D\u5C3D\u53EF\u80FD\u7684\u83B7\u53D6\u9AD8\u4EBA\u6C14\u6765\u7EF4\u6301\u6BCF\u65E5\u7684\u6B63\u5E38\u751F\u6D3B"
+  m_text: "\u6E38\u620F\u540D\u79F0  \u8F9E\u804C\u5458\u5DE5\u7684\u76F4\u64AD\u751F\u6DAF\n\u4F60\u662F\u4E00\u4E2A\u4E70\u4E86\u70C2\u5C3E\u697C\u7684\u5927\u9F84\u7A0B\u5E8F\u5458\uFF0C\u524D\u4E0D\u4E45\u521A\u88AB\u516C\u53F8\u88C1\u5458\u3002\u4F60\u9009\u62E9\u79DF\u4E86\u4E2A\u51FA\u79DF\u5C4B\u5F00\u76F4\u64AD\uFF0C\u9017\u4E50\u89C2\u4F17\u6765\u8D5A\u94B1\u6765\u652F\u4ED8\u623F\u8D37\u3002\n\u4F60\u9700\u8981\u83B7\u53D6\u8DB3\u591F\u591A\u7684\u4EBA\u6C14\u6765\u8D5A\u94B1\u3002\u5728\u4E00\u5929\u7684\u65F6\u95F4\u5185\u5C3D\u53EF\u80FD\u7684\u9009\u62E9\u56DE\u590D\u89C2\u4F17\u7684\u5F39\u5E55\u6765\u4F7F\u5F97\u89C2\u4F17\u5F00\u5FC3\u3002\u7136\u800C\u5F39\u5E55\u5E76\u4E0D\u4E00\u5B9A\u90FD\u662F\u6B63\u5E38\u7684\u5F39\u5E55\uFF0C\u4E5F\u53EF\u80FD\u4F1A\u6709\u4E00\u4E9B\u53EF\u80FD\u4E0D\u597D\u7684\u8A00\u8BBA\u4F1A\u5BF9\u76F4\u64AD\u95F4\u9020\u6210\u4E0D\u540C\u7684\u5F71\u54CD\u3002\n\u4F60\u9700\u8981\u5728\u6BCF\u5929\u7ED3\u675F\u524D\u5C3D\u53EF\u80FD\u7684\u83B7\u53D6\u9AD8\u4EBA\u6C14\u6765\u7EF4\u6301\u6BCF\u65E5\u7684\u6B63\u5E38\u751F\u6D3B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: af33a75f23dcf8240837d92fd65054d2, type: 2}
   m_sharedMaterial: {fileID: 6722170658630973163, guid: af33a75f23dcf8240837d92fd65054d2, type: 2}
@@ -4175,7 +4175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6158faf342fdd3f4ba8820d2645cd1b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oneDayTime: 60
+  oneDayTime: 5
   currentTime: 0
   spawnCurve:
     serializedVersion: 2
@@ -4989,71 +4989,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!1001 &1397896554
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 7931025936404246058, guid: ea3c372643b77e44fb2912727b851d00, type: 3}
-      propertyPath: m_Name
-      value: NormalComment
-      objectReference: {fileID: 0}
-    - target: {fileID: 8125322481554236123, guid: ea3c372643b77e44fb2912727b851d00, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8125322481554236123, guid: ea3c372643b77e44fb2912727b851d00, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8125322481554236123, guid: ea3c372643b77e44fb2912727b851d00, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8125322481554236123, guid: ea3c372643b77e44fb2912727b851d00, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8125322481554236123, guid: ea3c372643b77e44fb2912727b851d00, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8125322481554236123, guid: ea3c372643b77e44fb2912727b851d00, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 8125322481554236123, guid: ea3c372643b77e44fb2912727b851d00, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8125322481554236123, guid: ea3c372643b77e44fb2912727b851d00, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8125322481554236123, guid: ea3c372643b77e44fb2912727b851d00, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 8125322481554236123, guid: ea3c372643b77e44fb2912727b851d00, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8125322481554236123, guid: ea3c372643b77e44fb2912727b851d00, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8125322481554236123, guid: ea3c372643b77e44fb2912727b851d00, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 90
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ea3c372643b77e44fb2912727b851d00, type: 3}
 --- !u!1 &1399795503
 GameObject:
   m_ObjectHideFlags: 0
@@ -8042,4 +7977,3 @@ SceneRoots:
   - {fileID: 902820525}
   - {fileID: 1130243471}
   - {fileID: 1814652192}
-  - {fileID: 1397896554}

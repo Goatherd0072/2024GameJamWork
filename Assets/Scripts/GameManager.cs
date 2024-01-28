@@ -7,6 +7,7 @@ public class GameManager : MonoSingleton<GameManager>, ISubject
 {
     public float oneDayTime = 60f;
     public float currentTime = 0f;
+    float tempTime = 0;
     public AnimationCurve spawnCurve;
     public GameData gameData;
     public List<IObserver> listObserve;
@@ -14,6 +15,7 @@ public class GameManager : MonoSingleton<GameManager>, ISubject
     void Start()
     {
         gameData = new();
+        gameData.init();
         listObserve = new();
         UIManager.instance.InitBar();
     }
@@ -27,16 +29,47 @@ public class GameManager : MonoSingleton<GameManager>, ISubject
         }
     }
 
+    public void AddBannedV(float value)
+    {
+        gameData.BannedValue += value;
+        if (gameData.BannedValue < 0)
+        {
+            gameData.BannedValue = 0;
+        }
+        if (gameData.BannedValue > gameData.MaxBannedValue)
+        {
+            gameData.BannedValue = gameData.MaxBannedValue;
+        }
+    }
+
     private void FixedUpdate()
     {
-        currentTime += Time.fixedDeltaTime;
+        gameData.currentTime += Time.fixedDeltaTime;
+        currentTime = gameData.currentTime;
         CheckTime();
         NotifyObservers();
+        subBannedV();
+    }
+
+    void subBannedV()
+    {
+        tempTime += Time.fixedDeltaTime;
+        if (tempTime >= 0.5f)
+        {
+            tempTime = 0;
+            AddBannedV(-1.0f);
+        }
+
+    }
+
+    public bool CheckIsBan()
+    {
+        return gameData.BannedValue >= gameData.MaxBannedValue;
     }
 
     void CheckTime()
     {
-        if (currentTime >= oneDayTime)
+        if (gameData.currentTime >= oneDayTime)
         {
             //Debug.Log(("Day Gone"));
             WIndowsLinker.instance.OpenNextWindows?.Invoke(true);
@@ -65,7 +98,25 @@ public class GameManager : MonoSingleton<GameManager>, ISubject
         foreach (var observer in listObserve)
         {
             observer.OnNotifyGameDate(gameData);
-            observer.OnNotifyCurrentTime(currentTime);
+            observer.OnNotifyCurrentTime(gameData.currentTime);
         }
+    }
+
+    public bool CheckMoney()
+    {
+        return gameData.Money <= 0;
+    }
+
+    public string Calculate()
+    {
+        var date = gameData.Calculate();
+
+
+        string str = $"当前天数{date.days}" +
+            $"今日增加人气{date.addScore}\n" +
+            $"扣除房租贷款{date.dex}后增加{date.addMoney}\n" +
+            $"还剩{gameData.Money}元\n";
+
+        return str;
     }
 }

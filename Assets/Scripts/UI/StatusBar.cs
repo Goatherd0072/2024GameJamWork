@@ -32,5 +32,10 @@ public class StatusBar : Bar
     public override void OnNotifyGameDate(GameData data)
     {
         sliderBanValue.value = data.BannedValue;
+
+        if(data.BannedValue >= data.MaxBannedValue)
+        {
+            WIndowsLinker.instance.OpenNextWindows?.Invoke(true);
+        }
     }
 }
