@@ -14,6 +14,8 @@ public class CursorControllor : MonoSingleton<CursorControllor>
     ContactFilter2D filter = new ContactFilter2D();
     Collider2D[] colA = new Collider2D[MAX_CHECK_COLLIDER];
 
+    public bool isNeedCheck;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,17 +23,35 @@ public class CursorControllor : MonoSingleton<CursorControllor>
         col2D = cursor.GetComponent<Collider2D>();
         filter.layerMask = LayerMask.GetMask("Comment");
         filter.useLayerMask = true;
+        WIndowsLinker.instance.PuaseGame += SetCheck;
+    }
+
+    void SetCheck(bool isCheck)
+    {
+        Cursor.visible = isCheck;
+        isNeedCheck = !isCheck;
     }
 
     private void Update()
     {
+        if (!isNeedCheck)
+            return;
+
         if (!CheckIsAtArea())
         {
             Cursor.visible = true;
             return;
         }
         UpdateCursorPos(Input.mousePosition);
-        CheckMouseDown();
+
+        int l = col2D.OverlapCollider(filter, colA);
+        for (int i = 0; i < l; i++)
+        {
+            //Debug.Log(colA[i]);
+            colA[i].GetComponent<Comment>().HasHovered();
+        }
+
+        CheckMouseDown(colA, l);
     }
 
     bool CheckIsAtArea()
@@ -42,16 +62,14 @@ public class CursorControllor : MonoSingleton<CursorControllor>
         return RectTransformUtility.RectangleContainsScreenPoint(gameArea, Input.mousePosition);
     }
 
-    void CheckMouseDown()
+    void CheckMouseDown(Collider2D[] col, int length)
     {
         if (Input.GetMouseButtonDown(0))
         {
 
-            int l = col2D.OverlapCollider(filter, colA);
-            for (int i = 0; i < l; i++)
+            for (int i = 0; i < length; i++)
             {
-                //Debug.Log(colA[i]);
-                colA[i].GetComponent<Comment>().HasClicked();
+                col[i].GetComponent<Comment>().HasClicked();
             }
 
         }

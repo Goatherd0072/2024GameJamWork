@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -10,10 +11,18 @@ public class MainManager : MonoSingleton<MainManager>
 
     new void Awake()
     {
+        WIndowsLinker wIndowsLinker = new();
         AddSubManager<UIManager>("UIManager");
         AddSubManager<GameManager>("GameManager");
         AddSubManager<SpawnManager>("SpawnManager");
         AddSubManager<CursorControllor>("CursorControllor");
+
+        DOTween.SetTweensCapacity(1000, 50);
+
+        WIndowsLinker.instance.PuaseGame += PuasrTime;
+        WIndowsLinker.instance.ExitGame += QuitGame;
+
+        //WIndowsLinker.instance.OpenStartWindows.Invoke(true);
     }
 
     void AddSubManager<T>(string name) where T : MonoBehaviour, new()
@@ -35,8 +44,17 @@ public class MainManager : MonoSingleton<MainManager>
         }
         else
         {
-            go.SetActive(true); 
+            go.SetActive(true);
         }
     }
 
+    void PuasrTime(bool isPuase)
+    {
+        Time.timeScale = isPuase ? 0 : 1;
+    }
+
+    void QuitGame()
+    {
+        Application.Quit();
+    }
 }

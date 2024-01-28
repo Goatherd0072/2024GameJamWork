@@ -1,4 +1,5 @@
 public interface IObserver
 {
-    void OnNotify();
+    void OnNotifyGameDate(GameData data);
+    void OnNotifyCurrentTime(float time);
 }
